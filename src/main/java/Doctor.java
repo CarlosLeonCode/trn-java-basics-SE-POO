@@ -7,12 +7,14 @@ public class Doctor {
 //    Constructor definition, by default it is created one if we don't define one.
     Doctor(){
         System.out.println("This is my constructor method");
-        id++;
     }
 
-    Doctor(String name){
+//    Overload - Sobrecarga | method
+    Doctor(String name, String speciality){
         System.out.println("The doctor name is " + name);
         id++;
+        this.name = name;
+        this.speciality = speciality;
     }
 
 //    Class Methods

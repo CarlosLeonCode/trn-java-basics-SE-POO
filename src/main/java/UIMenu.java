@@ -1,11 +1,10 @@
-//package ui;
-
 import java.util.Scanner;
 
 //This class have static methods
 public class UIMenu {
 
-    public static String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+//    This is a constant, we use keyword `final`
+    public static final String[] MONTHS = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 
     public static void showMenu(){
         System.out.println("Welcome to My Appointments");
@@ -53,6 +52,9 @@ public class UIMenu {
             switch (response){
                 case 1:
                     System.out.println("::Book an appointment");
+                    for (int i = 1; i < 4; i++) {
+                        System.out.println(i +". " + MONTHS[i]);
+                    }
                     break;
                 case 2:
                     System.out.println("::My appointments");
