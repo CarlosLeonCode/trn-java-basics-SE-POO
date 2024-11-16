@@ -16,6 +16,10 @@ it could a conceptual or physical representation that has properties and behavio
 
 ### Objects:
 - Are the result of the model (classes)
+- these are compose by a group of attributes and methods.
+
+### Variables
+- They are elemental entities like numbers, characters, true or false, etc..
 
 ### Constructors methods:
 - This creates new instances of a class.
@@ -49,3 +53,24 @@ Constants doesn't change its value.
 > Check Patient class as example.
 
 ### Getters & Setters
+- Allow to us define methods for access to class attributes.
+
+### Arrays
+- These can storage primitives and objects
+
+### Collections
+- Only can storage objects.
+
+### Variables vs Objects on Memory
+- Variables use `Stack memory` who saves the value directly
+- Objects (arrays or lists) use `heap memory` who saves the memory address of the object
+```python
+my_dict = {'key': 'value'}
+another_dict = my_dict
+another_dict['key'] = 'new_value'
+print(my_dict['key'])  # Imprime 'new_value'. 
+```
+> La memoria Stack es mucho más rápida y nos permite almacenar nuestra información de forma “ordenada”. Aquí se guardan las variables y sus valores de tipos de datos primitivos (booleanos, números, strings, entre otros).
+> Los objetos también usan la memoria Stack, pero no para guardar su información, sino para guardar las coordenadas a la verdadera ubicación del objeto en la memoria Heap, una memoria que nos permite guardar grandes cantidades de información, pero con un poco menos de velocidad.
+
+### Nested Classes
