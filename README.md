@@ -74,3 +74,51 @@ print(my_dict['key'])  # Imprime 'new_value'.
 > Los objetos también usan la memoria Stack, pero no para guardar su información, sino para guardar las coordenadas a la verdadera ubicación del objeto en la memoria Heap, una memoria que nos permite guardar grandes cantidades de información, pero con un poco menos de velocidad.
 
 ### Nested Classes
+Las clases anidadas son clases definidas dentro de otra clase. 
+Esto permite estructurar y organizar el código en un 
+nivel lógico jerárquico. En Java 
+(y otros lenguajes orientados a objetos), las clases anidadas 
+se dividen en dos tipos principales:
+- Clases estáticas internas
+- Clases internas (no estáticas)
+
+Las Clases Anidadas o Clases Helper son clases dentro de otras 
+clases que agrupamos por su lógica y/o 
+características en común. Ejemplo:
+
+```javac
+public class Product {
+    // Clase anidada no estática
+    class Details {
+        private String manufacturer;
+        private double weight;
+
+        Details(String manufacturer, double weight) {
+            this.manufacturer = manufacturer;
+            this.weight = weight;
+        }
+
+        void printDetails() {
+            System.out.println("Fabricante: " + manufacturer);
+            System.out.println("Peso: " + weight + " kg");
+        }
+    }
+
+    private String name;
+
+    public Product(String name) {
+        this.name = name;
+    }
+
+    public void showProductInfo(String manufacturer, double weight) {
+        System.out.println("Producto: " + name);
+        Details details = new Details(manufacturer, weight); // Crear instancia de la clase anidada
+        details.printDetails();
+    }
+
+    public static void main(String[] args) {
+        Product product = new Product("Laptop");
+        product.showProductInfo("Dell", 2.5);
+    }
+}
+```
