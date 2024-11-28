@@ -1,27 +1,33 @@
 ## Object
+
 it could a conceptual or physical representation that has properties and behaviors.
 
 - Example:
-    - Physical: User (age, name, lastname = properties) | (run, walk, talk = actions or behaviors)
+    - Physical: model.User (age, name, lastname = properties) | (run, walk, talk = actions or behaviors)
     - Conceptual: Session.
 
 ---
 ## Definitions - Key concepts
 
 ### Abstraction:
+
 - When you analyze an object to become it a class representation
 
 ### Classes:
+
 - Are like molds that allow to us create objects. They are created after abstraction.
 
 ### Objects:
+
 - Are the result of the model (classes)
 - these are compose by a group of attributes and methods.
 
 ### Variables
+
 - They are elemental entities like numbers, characters, true or false, etc..
 
 ### Constructors methods:
+
 - This creates new instances of a class.
 - It has the same name that the class name.
 - it uses the `new` keyword to call it.
@@ -29,39 +35,47 @@ it could a conceptual or physical representation that has properties and behavio
 - It does not return values.
 
 ### Static Methods:
+
 - We can use them in all the class. That's why they belongs to them not to objects.
 - They are defined by `static` keyword
 - They are accessed through class name after a dot `.`, e.x:`Class.Method`
-> (Check UIMenu class as example)
+> (Check ui.UIMenu class as example)
 
 ### Constants
+
 Constants doesn't change its value.
 - We declare it with the keyword `final`. E.x: `public static final double PI = 3.14`.
 - We define it as capital.
 
 ### Methods Overload (Sobrecarga)
+
 - We use them when we need methods with the same name but with different arguments.
-> Check Doctor constructor on Doctor Class as example.
+> Check model.Doctor constructor on model.Doctor Class as example.
 
 ### Encapsulation
+
 - Defines the access level of a variable or attribute.
 - We use Access modifiers. Those are:
   - Public: Scope -> Class, Package, SubClass, others.
   - Protected: Scope -> Class, Package, SubClass.
   - Default: Scope -> Class, Package.
   - Private: Scope -> Class, Package.
-> Check Patient class as example.
+> Check model.Patient class as example.
 
 ### Getters & Setters
+
 - Allow to us define methods for access to class attributes.
 
 ### Arrays
+
 - These can storage primitives and objects
 
 ### Collections
+
 - Only can storage objects.
 
 ### Variables vs Objects on Memory
+
 - Variables use `Stack memory` who saves the value directly
 - Objects (arrays or lists) use `heap memory` who saves the memory address of the object
 ```python
@@ -74,6 +88,7 @@ print(my_dict['key'])  # Imprime 'new_value'.
 > Los objetos también usan la memoria Stack, pero no para guardar su información, sino para guardar las coordenadas a la verdadera ubicación del objeto en la memoria Heap, una memoria que nos permite guardar grandes cantidades de información, pero con un poco menos de velocidad.
 
 ### Nested Classes
+
 Las clases anidadas son clases definidas dentro de otra clase. 
 Esto permite estructurar y organizar el código en un 
 nivel lógico jerárquico. En Java 
@@ -86,7 +101,7 @@ Las Clases Anidadas o Clases Helper son clases dentro de otras
 clases que agrupamos por su lógica y/o 
 características en común. Ejemplo:
 
-```javac
+```java
 public class Product {
     // Clase anidada no estática
     class Details {
@@ -122,3 +137,129 @@ public class Product {
     }
 }
 ```
+
+### Inheritance
+
+Allow to us abstract and share logic. We have Superclass and child classes.
+- Superclass: It has defined basic logic to share and abstract
+- child classes: It has logic defined into superclass.
+
+### Multiple Inheritance
+> Java doesn't allow multiple Inheritance!
+
+### This and Super
+
+- This: References to the local class.
+- Super: References to the class from inheritance comes (Parent class).
+
+### We have 2 kinds of polymorphism
+
+#### En tiempo de ejecución (Dinámicos)
+Ocurre cuando la decisión sobre qué método invocar se toma en tiempo de 
+ejecución, basado en el objeto real (no en la referencia). En este tipo encontramos:
+
+- Sobreescritura de métodos (Method Overriding):
+  Cuando una clase hija redefine un método de la clase padre.
+
+  ```java
+    class Animal {
+      public void sound() {
+          System.out.println("El animal hace un sonido");
+      }
+    }
+    
+    class Dog extends Animal {
+      @Override
+      public void sound() {
+        System.out.println("El perro ladra");
+      }
+    }
+    
+    class Cat extends Animal {
+      @Override
+      public void sound() {
+        System.out.println("El gato maúlla");
+      }
+    }
+    
+    public class Main {
+      public static void main(String[] args) {
+        Animal myAnimal = new Dog(); // Polimorfismo dinámico
+        myAnimal.sound();           // Salida: El perro ladra
+        
+        myAnimal = new Cat();
+        myAnimal.sound();           // Salida: El gato maúlla
+      }
+    }
+  ```
+Características:
+- Resuelto en tiempo de ejecución.
+- Requiere herencia.
+- Se logra gracias al uso de referencias de clase padre y objetos de clase hija.
+
+#### En tiempo de compilación (Estáticos)
+Se logra cuando la decisión sobre qué método invocar se toma en tiempo de compilación.
+En este tipo encontramos:
+
+- Sobrecarga de métodos (Method Overloading):
+  Cuando definimos varios métodos con el mismo nombre pero diferentes parámetros.
+
+  ```java
+    class Calculator {
+      // Sobrecarga del método sum
+      public int sum(int a, int b) {
+          return a + b;
+      }
+      public double sum(double a, double b) {
+          return a + b;
+      }
+    }
+  
+    public class Main {
+      public static void main(String[] args) {
+        Calculator calc = new Calculator();
+        System.out.println(calc.sum(2, 3));         // Salida: 5
+        System.out.println(calc.sum(2.5, 3.5));     // Salida: 6.0
+      }
+    }
+  ```
+Características:
+- Resuelto durante la compilación.
+- No depende de la herencia ni del uso de clases padre/hijo.
+
+
+### Interfaces
+These are almost similar to classes but their differences are:
+- Defines behaviors and rules but not logic.
+- Defines behaviors that are redundant, and we use in many classes.
+- Defines how whe must write and define a class that implements the interface. This means:
+
+  - Attributes
+  - Methods
+  - Arguments
+  - Return lists
+
+- We can implement all interfaces that we want in a class. 
+
+  Example
+  ```java
+    // Interface definition
+    interface Animal {
+        void sound();  // Abstract method
+    }
+    
+    // Interface implementation and class definition
+    class Dog implements Animal {
+        public void sound() {
+            System.out.println("Woof");
+        }
+    }
+  
+    // Usage
+    public class Main {
+        public static void main(String[] args) {
+            Animal myDog = new Dog();  // Create a Dog object
+            myDog.sound();  // Call the sound method
+        }
+    }
+  ```

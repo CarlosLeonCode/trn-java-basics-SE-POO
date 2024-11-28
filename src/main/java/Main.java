@@ -1,19 +1,18 @@
-import java.util.Date;
+import model.Doctor;
 
 public class Main {
     public static void main(String[] args){
-//      Object instance from Doctor class
+//      == Object instance from model.Doctor class
         Doctor juanito = new Doctor("carlos", "Programmer");
-//      Object manipulation
-        juanito.setName("juanito");
+        juanito.setSpeciality("Cirugano");
+//      == Object manipulation
+        System.out.println(juanito);
 //        System.out.println(juanito.id);
 //        juanito.showName();
 //        juanito.showId();
 //
-//        Doctor cracken = new Doctor();
+//        model.Doctor cracken = new model.Doctor();
 //        cracken.showId();
-
-
-//        UIMenu.showMenu();
+//        ui.UIMenu.showMenu();
     }
 }
