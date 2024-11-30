@@ -240,6 +240,7 @@ These are almost similar to classes but their differences are:
   - Return lists
 
 - We can implement all interfaces that we want in a class. 
+- We have to implement all the definitions inside the interface into the class.
 
   Example
   ```java
@@ -263,3 +264,64 @@ These are almost similar to classes but their differences are:
         }
     }
   ```
+  
+### Abstract classes
+Allow to us:
+1.	Provide a base structure for other classes while enforcing certain methods to be implemented by child classes.
+2.	Allow partial implementation of functionality while leaving specific details to subclasses.
+3.	Facilitate code reusability and maintain a common interface for a family of related classes.
+
+When to Use Abstract Classes
+-	Use abstract classes when multiple related classes share some common behavior but also have specific behaviors that differ.
+-	Example: In a game, all characters might have a move() method, but their movement logic may vary.
+
+Example:
+
+Abstract Class Definition
+```java
+abstract class Animal {
+    void sleep() {
+        System.out.println("This animal sleeps.");
+    }
+
+    abstract void sound(); // Abstract method (no implementation)
+}
+```
+
+Concrete Implementation of Abstract Class
+```java
+class Dog extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Woof");
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Meow");
+    }
+}
+```
+Usage
+```java
+public class Main {
+    public static void main(String[] args) {
+        Animal myDog = new Dog();
+        Animal myCat = new Cat();
+
+        myDog.sleep();   // Shared behavior
+        myDog.sound();   // Dog-specific behavior
+
+        myCat.sleep();   // Shared behavior
+        myCat.sound();   // Cat-specific behavior
+    }
+}
+```
+```bash
+This animal sleeps.
+Woof
+This animal sleeps.
+Meow
+```
