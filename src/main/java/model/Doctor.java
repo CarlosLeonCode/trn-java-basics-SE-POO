@@ -14,7 +14,7 @@ public class Doctor extends User {
 //    }
 
 //    Overload - Sobrecarga | method
-    Doctor(String name, String email){
+    public Doctor(String name, String email){
         super(name, email);
         System.out.println("The doctor name is " + super.getName());
         this.speciality = speciality;

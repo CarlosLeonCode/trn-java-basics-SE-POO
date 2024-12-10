@@ -270,6 +270,7 @@ Allow to us:
 1.	Provide a base structure for other classes while enforcing certain methods to be implemented by child classes.
 2.	Allow partial implementation of functionality while leaving specific details to subclasses.
 3.	Facilitate code reusability and maintain a common interface for a family of related classes.
+4. These always are dad classes.
 
 When to Use Abstract Classes
 -	Use abstract classes when multiple related classes share some common behavior but also have specific behaviors that differ.
@@ -324,4 +325,25 @@ This animal sleeps.
 Woof
 This animal sleeps.
 Meow
+```
+
+### Herencia en interfaces
+Las interfaces pueden heredar de otras interfaces utilizando la palabra clave `extends`, 
+el concepto de herencia se aplicará como naturalmente se practica en clases, 
+es decir, la interfaz heredará y adquirirá los métodos de la interfaz padre.
+
+Una cosa interesante que sucede en caso de herencia con interfaces es que, aquí 
+sí es permitido la herencia múltiple como ves a continuación:
+
+```java
+public interface IReadable {
+	public void read();
+}
+
+
+public interface Visualizable extends IReadable, Serializable {
+	public void setViewed();
+	public Boolean isViewed();
+	public String timeViewed();
+}
 ```
